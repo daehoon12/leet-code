@@ -14,4 +14,6 @@ class Solution:
                 answer[0].append(player)
             elif score[player] ==1:
                 answer[1].append(player)
+        answer[0].sort()
+        answer[1].sort()
         return answer
