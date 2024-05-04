@@ -10,7 +10,7 @@ class Solution:
         for y in range(1, n):
             if obstacleGrid[y][0] == 0:
                 dp[y][0] = dp[y-1][0]
-            for x in range(m):
+            for x in range(1, m):
                 if obstacleGrid[y][x] == 0:    
                     dp[y][x] = dp[y-1][x] + dp[y][x-1]
         return dp[n-1][m-1]
