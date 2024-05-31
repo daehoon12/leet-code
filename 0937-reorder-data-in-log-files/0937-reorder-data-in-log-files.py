@@ -6,5 +6,5 @@ class Solution:
                 digits.append(log)
             else:
                 letters.append(log)
-        letters.sort(key= lambda x: x.split()[1:])
+        letters.sort(key= lambda x: (x.split()[1:], x.split()[0]))
         return letters + digits
