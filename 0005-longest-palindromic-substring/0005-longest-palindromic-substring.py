@@ -1,15 +1,26 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        result=''
-        def expand(left, right):
-            while left >=0 and right <=len(s) and s[left] == s[right-1]:
-                left-=1
-                right+=1
-            return s[left+1:right-1]
-          
-        if len(s) < 2 or s==s[::-1]:
-            return s
+        left = 0
+        maxLen = 0
+
+        def check(start, end):
+            nonlocal maxLen, left 
+
+            while start > 0 and end < len(s) and s[start] == s[end]:
+                start -= 1
+                end += 1
+            
+            if (end - start - 1) > maxLen:
+                maxLen = (end - start - 1)
+                left = start + 1
         
+        if len(s) <= 1:
+            return s
+            
         for i in range(len(s)-1):
-            result = max(result, expand(i, i+1), expand(i, i+2), key=len)
-        return result
+            check(i, i+1)
+            check(i, i+2)
+        
+        return s[left:left + maxLen]
+            
+            
