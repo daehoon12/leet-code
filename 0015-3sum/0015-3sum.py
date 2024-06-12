@@ -11,7 +11,9 @@ class Solution:
                     answer.add((nums[i], nums[left], nums[right]))
                     left +=1
                     right -= 1
-                elif nums[i] + nums[left] + nums[right] > 0 :
+                    continue
+                    
+                if nums[i] + nums[left] + nums[right] > 0 :
                     right -= 1
                 else:
                     left += 1
