@@ -6,7 +6,6 @@ class Solution:
         answer = len(heights) -1
         for i in range(1, len(heights)):
             if heights[i] - heights[i-1] > 0:
-                print(heights[i] - heights[i-1])
                 heapq.heappush(heap, heights[i] - heights[i-1])
             
             if len(heap) > ladders:
