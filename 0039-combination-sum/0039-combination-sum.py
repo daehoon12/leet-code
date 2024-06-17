@@ -1,8 +1,7 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         answer=[]
-        def dfs(idx, cnt, element, summ):
-            
+        def dfs(idx, element, summ):
             if summ == target:
                 if sorted(element) not in answer:
                     answer.append(element)
@@ -10,9 +9,9 @@ class Solution:
                 return
             
             for i in range(idx, len(candidates)):
-                dfs(i, cnt+1, element+[candidates[i]], summ+candidates[i])
+                dfs(i, element+[candidates[i]], summ+candidates[i])
                
         candidates=sorted(candidates)
-        dfs(0,0,[],0)
+        dfs(0,[],0)
         return answer
         
