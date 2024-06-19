@@ -3,8 +3,6 @@ from collections import defaultdict
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
         answer = 0
-        start = 0
-        n = len(nums)
         dic = defaultdict(int)
         total = 0
         dic[0] = -1
