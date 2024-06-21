@@ -16,6 +16,7 @@ class Solution:
                 answer = max(answer, i - dic[total])
             else:
                 dic[total] = i        
+
         return answer
 
                 
