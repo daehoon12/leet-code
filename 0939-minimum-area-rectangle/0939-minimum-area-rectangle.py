@@ -1,15 +1,14 @@
 import sys
 class Solution:
     def minAreaRect(self, points: List[List[int]]) -> int:
+        s = set()
         answer = sys.maxsize
-        dots = set()
         n = len(points)
         for i in range(n):
             x1, y1 = points[i]
-            for j in range(0, n):
+            for j in range(n):
                 x2, y2 = points[j]
-                if (x1, y2) in dots and (x2, y1) in dots:
-                    answer= min(answer, abs(y2 - y1) * abs(x2 - x1))
-            dots.add((x1, y1))
-
-        return answer if answer != sys.maxsize else 0
+                if (x2, y1) in s and (x1, y2) in s:
+                    answer = min(answer, abs((y2 - y1) * (x2 - x1)))
+            s.add((x1, y1))
+        return 0 if answer == sys.maxsize else answer
