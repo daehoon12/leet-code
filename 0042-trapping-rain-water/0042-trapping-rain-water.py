@@ -3,6 +3,8 @@ class Solution:
         answer = 0
         left, right = 0, len(height)-1
         left_max, right_max = height[left], height[right]
+
+
         while left < right:
             if left_max < right_max:
                 answer += left_max - height[left]
