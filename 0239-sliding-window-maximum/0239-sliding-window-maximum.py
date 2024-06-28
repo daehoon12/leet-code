@@ -6,7 +6,6 @@ class Solution:
         n = len(nums)
         answer = []
         q = deque()
-        q_size = 0
 
         for i in range(n):
             if q and q[0] < i - k + 1:
@@ -16,7 +15,7 @@ class Solution:
                 q.pop()
             q.append(i)
 
-            if i + 1 >=k :
+            if i + 1 >= k:
                 answer.append(nums[q[0]])
 
         return answer
