@@ -8,6 +8,7 @@ class Solution:
         dic = defaultdict(int)
         left, right = 0, 0
         answer = 0
+        
         while right < s_len:
             if not dic[s[right]]:
                 dic[s[right]] += 1
