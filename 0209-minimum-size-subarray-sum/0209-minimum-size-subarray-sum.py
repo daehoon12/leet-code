@@ -14,6 +14,3 @@ class Solution:
                 left += 1
                 
         return 0 if answer == sys.maxsize else answer
-
-            
-
