@@ -7,9 +7,9 @@ class Solution:
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
             for j in range(i + 1, n):
-                if i > 0 and nums[i] == nums[i - 1]:
+                if j > i + 1 and nums[j] == nums[j - 1]:
                     continue
-                    
+
                 a = nums[i]
                 b = nums[j]
                 left = j + 1
