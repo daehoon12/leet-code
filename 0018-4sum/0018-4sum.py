@@ -4,7 +4,12 @@ class Solution:
         n = len(nums)
         answer = set()
         for i in range(n):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
             for j in range(i + 1, n):
+                if i > 0 and nums[i] == nums[i - 1]:
+                    continue
+                    
                 a = nums[i]
                 b = nums[j]
                 left = j + 1
