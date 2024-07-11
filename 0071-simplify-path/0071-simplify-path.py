@@ -1,7 +1,7 @@
 class Solution:
     def simplifyPath(self, path: str) -> str:
         path_list = list(filter(lambda x: x != "", path.split("/")))
-        print(path_list)
+
         stack = []
         for p in path_list:
             if p == '..':
