@@ -18,4 +18,4 @@ class Solution:
                 elif token == '/':
                     result = int(math.trunc(first / second))
                 st.append(result)
-        return st[0]
+        return st[-1]
