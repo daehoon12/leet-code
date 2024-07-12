@@ -4,5 +4,4 @@ class Solution:
         for cost, cashback in transactions: 
             ans += max(0, cost - cashback)
             val = max(val, min(cost, cashback))
-            print(ans, val)
         return ans + val 
