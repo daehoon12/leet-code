@@ -10,15 +10,10 @@ class Solution:
             if low > high:
                 return None
             mid = low + (high - low) // 2
-            
             node = TreeNode(nums[mid])
-            node.left = binary_search(low, mid - 1)
-            node.right = binary_search(mid + 1, high)
-            
+            node.left = binary_search(low, mid-1)
+            node.right = binary_search(mid+1, high)
+
             return node
-
-        if len(nums) == 0:
-            return None
         return binary_search(0, len(nums)-1)
-
-    
+        
