@@ -6,7 +6,6 @@ class Solution:
         for a, b in boxTypes:
             if truckSize - a < 0:
                 answer += truckSize * b
-                truckSize -= truckSize
                 break
             truckSize -= a
             answer += a * b
