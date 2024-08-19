@@ -1,15 +1,18 @@
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        gas_info = [(i, g, c) for i, (g, c) in enumerate(zip(gas, cost))]
-        gas_info.sort(key= lambda x: (x[2] - x[1]))
-        answer = gas_info[0][0]
-        tank = 0
-        for i, g, c in gas_info:
-            if tank - c + g < 0:
-                return -1
-            tank += (g - c)
+        if sum(gas) < sum(cost):
+            return -1
 
+        answer = 0
+        fuel = 0
+        
+        for idx, g in enumerate(gas):
+            c = cost[idx]
+            if fuel + g - c < 0:
+                answer = idx + 1
+                fuel = 0
+            else:
+                fuel += g - c
         return answer
-                
-
+            
         
