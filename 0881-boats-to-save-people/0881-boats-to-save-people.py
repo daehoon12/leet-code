@@ -1,6 +1,6 @@
 class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:
-        people = sorted(people, reverse = True)
+        people.sort()
         left, right = 0, len(people) - 1
         answer = 0
 
@@ -9,11 +9,7 @@ class Solution:
                 left += 1
                 right -= 1
                 answer += 1
-            elif people[left] <= limit:
-                left += 1
+            elif people[right] <= limit:
+                right -= 1
                 answer += 1
         return answer            
-
-
-            
-        
