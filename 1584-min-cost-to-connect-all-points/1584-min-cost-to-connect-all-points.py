@@ -1,13 +1,7 @@
-import heapq
+from collections import defaultdict
 
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
-        def find(x):
-            if parents[x] == x:
-                return x
-            parents[x] = find(parents[x])
-            return parents[x]
-
         def union(x, y):
             x = find(x)
             y = find(y)
@@ -16,27 +10,26 @@ class Solution:
                 parents[y] = x
             else:
                 parents[x] = y
+        
+        def find(x):
+            if parents[x] == x:
+                return x
+            parents[x] = find(parents[x])
+            return parents[x]
 
         n = len(points)
         edges = []
-        
-        # Build all edges with their weights (Manhattan distance)
+        answer = 0 
         for i in range(n):
-            for j in range(i + 1, n):
-                weight = abs(points[j][0] - points[i][0]) + abs(points[j][1] - points[i][1])
-                heapq.heappush(edges, (weight, i, j))
-        
+            for j in range(i+1, n):
+                w = abs(points[j][0] - points[i][0]) + abs(points[j][1] - points[i][1])
+                edges.append((i,j, w ))
+
+        edges =sorted(edges, key=lambda x:(x[2], x[0]))
         parents = list(range(n))
-        rank = [0] * n
-        answer = 0
-        edges_used = 0
-        
-        # Process the edges in order of smallest weight
-        while edges and edges_used < n - 1:
-            weight, u, v = heapq.heappop(edges)
-            if find(u) != find(v):
-                union(u, v)
-                answer += weight
-                edges_used += 1
-        
+        for edge in edges:
+            if find(edge[0]) != find(edge[1]):
+                union(edge[0], edge[1])
+                answer += edge[2]
+
         return answer
