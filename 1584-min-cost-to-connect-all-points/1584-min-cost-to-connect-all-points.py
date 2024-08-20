@@ -1,5 +1,4 @@
 from collections import defaultdict
-import heapq
 
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
@@ -24,13 +23,13 @@ class Solution:
         for i in range(n):
             for j in range(i+1, n):
                 w = abs(points[j][0] - points[i][0]) + abs(points[j][1] - points[i][1])
-                heapq.heappush(edges, (w, i,j))
+                edges.append((i,j, w ))
 
+        edges =sorted(edges, key=lambda x:(x[2], x[0]))
         parents = list(range(n))
-          # Process the edges in order of smallest weight
-        while edges:
-            weight, u, v = heapq.heappop(edges)
-            if find(u) != find(v):
-                union(u, v)
-                answer += weight
+        for edge in edges:
+            if find(edge[0]) != find(edge[1]):
+                union(edge[0], edge[1])
+                answer += edge[2]
+
         return answer
